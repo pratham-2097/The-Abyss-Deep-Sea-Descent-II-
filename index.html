@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Abyss: Deep-Sea Descent II</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>The Abyss: Deep-Sea Descent II</h1>
+    <p class="by">Pratham Prabhu &middot; Computer Graphics I, University of Cincinnati &middot; Project 2: Cube World</p>
+    <p class="about">
+      In Project 1 I made Deep-Sea Descent, a dive through an underwater scene drawn with lines and triangles.
+      This time the ocean is a full 3D world in WebGL made only out of cubes. The seafloor comes from a height map
+      and a color image, and a submarine (finally) cruises through the water with fish and jellyfish on Bezier curves.
+      Pick a level below to see each part of the project.
+    </p>
+  </header>
+
+  <nav id="tabs">
+    <button id="tab-0" onclick="setLevel('0')">Level 0</button>
+    <button id="tab-1a" onclick="setLevel('1a')">1a Grid</button>
+    <button id="tab-1b" onclick="setLevel('1b')">1b Heights</button>
+    <button id="tab-1c" onclick="setLevel('1c')">1c Colors</button>
+    <button id="tab-1d" onclick="setLevel('1d')">1d Camera</button>
+    <button id="tab-2" onclick="setLevel('2')">Level 2 Images</button>
+    <button id="tab-3" onclick="setLevel('3')">Level 3 Sky</button>
+    <button id="tab-4" onclick="setLevel('4')">Level 4 Atmosphere</button>
+  </nav>
+
+  <main>
+    <canvas id="c"></canvas>
+    <aside>
+      <h2 id="level-title"></h2>
+      <p id="level-text"></p>
+
+      <!-- level 1 controls -->
+      <div id="grid-controls">
+        <p>Grid size:
+          <select id="grid-size">
+            <option value="10">10 x 10</option>
+            <option value="25" selected>25 x 25</option>
+            <option value="50">50 x 50</option>
+            <option value="100">100 x 100</option>
+          </select>
+        </p>
+      </div>
+
+      <div id="height-controls">
+        <p>Heights:
+          <select id="height-mode">
+            <option value="wave" selected>My formula (hills + trench)</option>
+            <option value="random">Random</option>
+          </select>
+        </p>
+      </div>
+
+      <!-- level 2, 3 and 4 controls -->
+      <div id="res-controls">
+        <p>Resolution (cubes per side):
+          <select id="resolution">
+            <option value="25">25</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+            <option value="150">150</option>
+            <option value="200">200</option>
+          </select>
+        </p>
+        <p class="note">150 and 200 (40,000 cubes) need a strong computer.</p>
+      </div>
+
+      <div id="sky-controls">
+        <label><input type="checkbox" id="paths"> Show Bezier paths and control points</label>
+        <label><input type="checkbox" id="ride"> Ride along with the submarine</label>
+      </div>
+
+      <div id="fx-controls">
+        <label><input type="checkbox" id="phong" checked> Phong lighting</label>
+        <label><input type="checkbox" id="fog" checked> Fog</label>
+        <label><input type="checkbox" id="skybox" checked> Skybox</label>
+      </div>
+
+      <div id="orbit-controls">
+        <label><input type="checkbox" id="orbit"> Camera moves around the center</label>
+      </div>
+
+      <p id="error" class="error"></p>
+      <p class="help">Drag to move the camera, scroll to zoom.</p>
+      <p id="fps"></p>
+    </aside>
+  </main>
+
+  <script src="js/matrix.js"></script>
+  <script src="js/cube.js"></script>
+  <script src="js/bezier.js"></script>
+  <script src="js/terrain.js"></script>
+  <script src="js/sky.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
